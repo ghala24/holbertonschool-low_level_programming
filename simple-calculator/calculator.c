@@ -1,13 +1,13 @@
 #include <stdio.h>
 
 /**
- * main - simple calculator with addition and subtraction
+ * main - simple calculator with four operations
  * Return: Always 0
  */
 int main(void)
 {
 	int choice;
-	int a, b;
+	double a, b;
 
 	while (1)
 	{
@@ -35,22 +35,28 @@ int main(void)
 			continue;
 		}
 
-		if (choice == 1 || choice == 2)
+		printf("A: ");
+		fflush(stdout);
+		if (scanf("%lf", &a) != 1)
+			break;
+
+		printf("B: ");
+		fflush(stdout);
+		if (scanf("%lf", &b) != 1)
+			break;
+
+		if (choice == 1)
+			printf("Result: %g\n", a + b);
+		else if (choice == 2)
+			printf("Result: %g\n", a - b);
+		else if (choice == 3)
+			printf("Result: %g\n", a * b);
+		else if (choice == 4)
 		{
-			printf("A: ");
-			fflush(stdout);
-			if (scanf("%d", &a) != 1)
-				break;
-
-			printf("B: ");
-			fflush(stdout);
-			if (scanf("%d", &b) != 1)
-				break;
-
-			if (choice == 1)
-				printf("Result: %d\n", a + b);
+			if (b == 0)
+				printf("Error: division by zero\n");
 			else
-				printf("Result: %d\n", a - b);
+				printf("Result: %g\n", a / b);
 		}
 	}
 
